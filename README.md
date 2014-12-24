@@ -6,6 +6,10 @@ It's written in BASH scripting language and only needs **cURL**.
 
 **Why use this script?**
 
+
+
+
+
 * **Portable:** It's written in BASH scripting and only needs *cURL* (curl is a tool to transfer data from or to a server, available for all operating systems and installed by default in many linux distributions).
 * **Secure:** It's not required to provide your username/password to this script, because it uses the official Dropbox API for the authentication process. 
 

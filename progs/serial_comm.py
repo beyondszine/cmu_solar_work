@@ -5,6 +5,9 @@ import serial
 import sys
 import glob
 import time
+import atexit
+
+
 
 def serial_ports():
 	if sys.platform.startswith('win'):
@@ -51,8 +54,12 @@ def connect_serial(x):
     x='.'.join(x)
     try:
         ser=serial.Serial(x,9600)
+	print "opened, now reading"
+	ser.close()
+        time.sleep(0.5)
+	ser=serial.Serial(x,9600)
         data=ser.readline()
-        print data
+	print data
         print "Port opened successfully"
     except (OSError,serial.SerialException):
         print "could not open serial port"
@@ -101,6 +108,7 @@ def main():
 		if x!="NO_PORT":
 			serial_obj=connect_serial(x)
 			time.sleep(1)
+			grab_serial(serial_obj)
 			#parse_serialdata(serial_obj)
 		else :
 			print "no port available, try after some time"
